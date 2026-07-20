@@ -151,7 +151,7 @@ public class Empresa {
                     System.out.println("Tipo invalido");
                     break;
             }
-        } while (tipo>4 && tipo <1);
+        } while (tipo > 4 || tipo < 1);
         
         double sueldo;
         do {
@@ -176,7 +176,14 @@ public class Empresa {
      */
 
     private static void pay() {
-
+        System.out.print("Ingrese el código del empleado para pagar: ");
+        int cod = lea.nextInt();
+        Empleado e = search(cod);
+        if (e != null) {
+            System.out.println("El pago para " + e.getNombre() + " es: " + e.getSueldo());
+        } else {
+            System.out.println("Empleado no encontrado.");
+        }
     }
 
     /**
@@ -190,6 +197,7 @@ public class Empresa {
             System.out.println("\nCodigo de empleado:" + e.getCodigo());
             System.out.println("\nNombre de empleado:" + e.getNombre());
             System.out.println("\nTipo de empleado:" + e.getTipo());
+            System.out.println("");
         }
     }
 
@@ -248,7 +256,17 @@ public class Empresa {
      */
 
     private static void setFin() {
-
+        System.out.print("Ingrese el código del empleado temporal: ");
+        int cod = lea.nextInt();
+        Empleado e = search(cod);
+        if (e != null && "Temporal".equalsIgnoreCase(e.getTipo())) {
+            System.out.print("Ingrese la fecha de fin de contrato (en formato entero): ");
+            int fecha = lea.nextInt();
+            e.setFechaF(fecha);
+            System.out.println("Fecha de fin de contrato actualizada.");
+        } else {
+            System.out.println("El empleado no existe o no es de tipo Temporal.");
+        }
     }
 
     /**
@@ -264,7 +282,17 @@ public class Empresa {
      */
 
     private static void ventas() {
-
+        System.out.print("Ingrese el código del empleado de ventas: ");
+        int cod = lea.nextInt();
+        Empleado e = search(cod);
+        if (e != null && e.getTipo().equals("Ventas")) {
+            System.out.print("Ingrese el monto de la venta a agregar: ");
+            double monto = lea.nextDouble();
+            e.setSueldo(e.getSueldo() + monto);
+            System.out.println("Venta agregada exitosamente.");
+        } else {
+            System.out.println("El empleado no existe o no es de Ventas.");
+        }
     }
 
     /**
@@ -280,7 +308,17 @@ public class Empresa {
      */
 
     private static void horas() {
-
+        System.out.print("Ingrese el código del empleado por horas: ");
+        int cod = lea.nextInt();
+        Empleado e = search(cod);
+        if (e != null && e.getTipo().equals("Hora")) {
+            System.out.print("Ingrese el monto a pagar por las horas: ");
+            double pagoHoras = lea.nextDouble();
+            e.setSueldo(e.getSueldo() + pagoHoras);
+            System.out.println("Pago por horas agregado exitosamente.");
+        } else {
+            System.out.println("El empleado no existe o no es de Hora.");
+        }
     }
 
 }
