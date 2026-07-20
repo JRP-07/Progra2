@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package prueba1;
 
-import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,6 +7,8 @@ import java.util.Scanner;
  *
  * @author josep
  */
+
+//José Rafael Pérez García 22611142
 public class Empresa {
 
     static ArrayList<Empleado> empleados;
@@ -24,7 +21,7 @@ public class Empresa {
 
         do {
 
-            System.out.println("1- Agregar Empleado");
+            System.out.println("\n1- Agregar Empleado");
 
             System.out.println("2- Pagar Empleado");
 
@@ -61,9 +58,7 @@ public class Empresa {
                 case 4:
 
                     submenu();
-
                     break;
-
             }
 
         } while (opcion != 5);
@@ -195,9 +190,9 @@ public class Empresa {
     private static void list() {
         for (Empleado e : empleados) {
             System.out.println("\nCodigo de empleado:" + e.getCodigo());
-            System.out.println("\nNombre de empleado:" + e.getNombre());
-            System.out.println("\nTipo de empleado:" + e.getTipo());
-            System.out.println("");
+            System.out.println("Nombre de empleado:" + e.getNombre());
+            System.out.println("Tipo de empleado:" + e.getTipo());
+            System.out.println("Sueldo del empleado:" + e.getTipo());
         }
     }
 
@@ -260,12 +255,12 @@ public class Empresa {
         int cod = lea.nextInt();
         Empleado e = search(cod);
         if (e != null && "Temporal".equalsIgnoreCase(e.getTipo())) {
-            System.out.print("Ingrese la fecha de fin de contrato (en formato entero): ");
+            System.out.print("Ingrese la fecha de fin de contrato: ");
             int fecha = lea.nextInt();
             e.setFechaF(fecha);
             System.out.println("Fecha de fin de contrato actualizada.");
         } else {
-            System.out.println("El empleado no existe o no es de tipo Temporal.");
+            System.out.println("El empleado no existe o no es Temporal.");
         }
     }
 
