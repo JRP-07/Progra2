@@ -1,4 +1,4 @@
-package Ejercicios;
+package Ej1;
 
 public class FuncionesRecursivas {
     public static int sumaUP(int num){
