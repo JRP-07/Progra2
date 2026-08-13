@@ -10,6 +10,11 @@ public class GestorPedidos {
     }
 
     public void AgregarPedido(Pedido dato) throws CapacidadException{
-        
+        if(cantidad == pedidos.length){
+            throw new CapacidadException(pedidos.length);
+        }
+
+        pedidos[cantidad] = dato;
+        cantidad++;
     }
 }
